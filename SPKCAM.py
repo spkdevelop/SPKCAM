@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env python
 #
 # Copyright 2015 Daniel Fernandez (daniel@spkautomatizacion.com), Saul Pilatowsky (saul@spkautomatizacion.com) 
@@ -21,8 +20,7 @@
 #
 # Find us at: http://www.spkautomatizacion.com
 
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
+
 import rhinoscriptsyntax as rs
 import operator
 import Rhino
@@ -31,10 +29,7 @@ import urllib2
 import subprocess
 import sys
 import json
-<<<<<<< HEAD
 import System.Windows.Forms.DialogResult
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
 
 POINT_INPUT_VALUES = ["Diametro cortador o broca:",
             "Feed mm/min:",
@@ -67,11 +62,7 @@ ENGRAVING_INPUT_VALUES= ["Profundidad corte (Negativo):",
 
 
 IN_TEXT = ["(LINARAND SPK:. Generador CodigoG 1.b 2015)","G21","G90","G54","M3"]
-<<<<<<< HEAD
 OUT_TEXT = ["M5","G0X0Y0"]
-=======
-OUT_TEXT = ["M5","G0X0Y0","M30"]
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
 
 POINT_COLOR = (255,255,255)
 PLUNGE_COLOR = (200,200,200)
@@ -91,7 +82,6 @@ PROTECTED_SETTING = "GENERICO"
 
 def get_sec_plane(objects):
     
-<<<<<<< HEAD
     
     z_points = []
     for group in objects:
@@ -109,25 +99,6 @@ def get_sec_plane(objects):
                     z_points.append(rs.PointCoordinates(group)[2])
                 
             
-=======
-    print objects
-    z_points = []
-    for group in objects:
-        if group > 1:
-            for object in group:
-                if rs.IsCurve(object):
-                    z_points.append(rs.CurveStartPoint(object)[2])
-                if rs.IsPoint(object):
-                    z_points.append(rs.PointCoordinates(object)[2])
-        else:
-            if rs.IsCurve(group):
-                z_points.append(rs.CurveStartPoint(group)[2])
-            if rs.IsPoint(group):
-                z_points.append(rs.PointCoordinates(group)[2])
-            
-        
-    print z_points
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     try:
         return z_points.sort()[0]+6
     except:
@@ -145,10 +116,7 @@ def colect_objects():
     curves_open = []
     curves_pocketing = []
     curve_material = False
-<<<<<<< HEAD
     validated = False
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     if objects:
         for object in objects:
             if rs.IsCurve(object):
@@ -157,7 +125,6 @@ def colect_objects():
                 rgb = (rs.ColorRedValue(color),rs.ColorGreenValue(color),rs.ColorBlueValue(color))
                 if rs.IsCurveClosed(object):
                     if rgb == (0,0,255):
-<<<<<<< HEAD
                         validated = True
                         curves_inside.append(object)
                     if rgb == (255,0,0):
@@ -181,26 +148,6 @@ def colect_objects():
         return points,curves_open,curves_pocketing,curves_inside,curves_outside,curve_material
     else:
         return False
-=======
-                        curves_inside.append(object)
-                    if rgb == (255,0,0):
-                        curves_outside.append(object)
-                    if rgb == (255,0,255):
-                        curves_pocketing.append(object)
-                    if rgb == (0,255,255):
-                        curve_material = object
-                
-                if rgb == (0,255,0):
-                    curves_open.append(object)
-            
-            if rs.IsPoint(object):
-                points.append(object)
-                
-        return points,curves_open,curves_pocketing,curves_inside,curves_outside,curve_material
-        
-    else:
-      return False
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
       
 ##Se usa para convertir los strings de settings a numeros enteros
 def input_to_number(input_data):
@@ -212,39 +159,26 @@ def input_to_number(input_data):
             input.append(i)
     return input #
 
-<<<<<<< HEAD
 def upload_to_server(save_path,settings_path,image_1,image_2,user,price,pid,name,gname):
     
     #print "python " + "\"" + sys.path[0] + "\\Upload.py " + "\"" + save_path + "\"  \"" +  settings_path +"\" " +image_1 + " " + image_2 + " " + user
     subprocess.call("python " +  "\"" + sys.path[0] + "\\Upload.py\" " + "\"" + save_path + "\"  \"" +  settings_path +"\" " +image_1 + " " + image_2 + " " + user + " " + str(price) + " " + str(pid) + " " + "\"" + str(name) + "\"" + " " + "\"" + str(gname) + "\"")
     print "Archivo guardado en el servidor"
    
-=======
-def upload_to_server(save_path,settings_path,image_1,image_2,user,price):
-    
-    #print "python " + "\"" + sys.path[0] + "\\Upload.py " + "\"" + save_path + "\"  \"" +  settings_path +"\" " +image_1 + " " + image_2 + " " + user
-    subprocess.call("python " +  "\"" + sys.path[0] + "\\Upload.py\" " + "\"" + save_path + "\"  \"" +  settings_path +"\" " +image_1 + " " + image_2 + " " + user + " " + str(price))
-    print "Archivo guardado en el servidor"
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     
 def save_file(g_code,autoname):
 
     if autoname.lower().strip() == "no":
-<<<<<<< HEAD
         save_path = rs.SaveFileName("Selecciona donde guardar el codigo",".txt|Filter1|.nc|Filter2||", rs.DocumentPath(),"%s" % (rs.DocumentName().replace(".3dm","")), ".txt")
         if save_path:
             if not save_path.endswith("_CodigoG.txt"):
                 save_path = save_path.replace(".txt","-SPKCAM_CodigoG.txt")
         else:
             return False
-=======
-        save_path = rs.SaveFileName("Selecciona donde guardar el codigo",".txt|Filter1|.nc|Filter2||", rs.DocumentPath(),"%s-SPKCAM_CodigoG.txt" % (rs.DocumentName().replace(".3dm","")), ".txt")
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     else:
         if rs.DocumentPath():
             save_path = rs.DocumentPath().replace(rs.DocumentName(),"%s-SPKCAM_CodigoG.txt" % (rs.DocumentName().replace(".3dm","")))
         else:
-<<<<<<< HEAD
             rs.MessageBox("No se ha podido autonombrar el archivo. \n\n El documento de Rhino debe estar previamente guardado para usar esta opcion.")
             save_path = rs.SaveFileName("Selecciona donde guardar el codigo",".txt|Filter1|.nc|Filter2||", rs.DocumentPath(),"%s-SPKCAM_CodigoG.txt" % (rs.DocumentName().replace(".3dm","")), ".txt")
             if save_path:
@@ -261,17 +195,6 @@ def save_file(g_code,autoname):
     target.close()
     return save_path
   
-=======
-            rs.MessageBox("No se ha podido autonombrar el archivo. \n\nEs un buen habito guardar su archivo de Rhino antes de generar el codigo.\n(OJO: Basiiii!!!!!!)")
-            save_path = rs.SaveFileName("Selecciona donde guardar el codigo",".txt|Filter1|.nc|Filter2||", rs.DocumentPath(),"%s-SPKCAM_CodigoG.txt" % (rs.DocumentName().replace(".3dm","")), ".txt")
-            
-    target = open(save_path, 'w')
-    for line in g_code:
-        target.write(line+ "\n")
-        
-    target.close()
-    return save_path
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
 
 def save_settings_file(save_path,settings,name):
     target_path = save_path.replace("CodigoG",name)
@@ -288,7 +211,6 @@ def save_image(file_path,objectsToCapture):
     save_path = "\"" + file_path.replace("_CodigoG.txt","_SnapShot1.png\"")
     save_path_2 = "\"" + file_path.replace("_CodigoG.txt","_SnapShot2.png\"")
 
-<<<<<<< HEAD
     try:
         rs.Wallpaper("Top", PATH_WALLPAPER)
         rs.Wallpaper("Perspective", PATH_WALLPAPER)
@@ -301,16 +223,6 @@ def save_image(file_path,objectsToCapture):
         rs.WallpaperHidden ("Superior", False)
         rs.WallpaperHidden ("Perspectiva", False)
         rs.Command("_SetActiveViewport Superior _Enter")
-=======
-    
-    print save_path
-    print save_path_2
-    rs.Wallpaper("Top", PATH_WALLPAPER)
-    rs.Wallpaper("Perspective", PATH_WALLPAPER)
-    rs.WallpaperHidden ("Top", False)
-    rs.WallpaperHidden ("Perspective", False)
-    rs.Command("_SetActiveViewport Top _Enter")
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
 
     #rs.Command("-_SetDisplayMode _Viewport=Top _Mode=Rendered _Enter")
     rs.Command("-_ViewCaptureToFile " + save_path + " _Width=" + str(width) + " _Height=" + str(heigth) + " _Enter")
@@ -321,7 +233,6 @@ def save_image(file_path,objectsToCapture):
     #rs.Command("-_SetDisplayMode _Viewport=Perspective _Mode=Rendered _Enter")
     rs.Command("-_ViewCaptureToFile " + save_path_2 + " _Width=" + str(width) + " _Height=" + str(heigth) + " _Enter")
     #rs.Command("-_SetDisplayMode _Viewport=Perspective _Mode=Shaded _Enter")
-<<<<<<< HEAD
     try:
         rs.WallpaperHidden ("Top", True)
         rs.WallpaperHidden ("Perspective", True)
@@ -329,20 +240,11 @@ def save_image(file_path,objectsToCapture):
         rs.WallpaperHidden ("Superior", True)
         rs.WallpaperHidden ("Perspectiva", True)
         
-=======
-    
-    rs.WallpaperHidden ("Top", True)
-    rs.WallpaperHidden ("Perspective", True)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     return save_path,save_path_2
     
 class SettingsControl():
     
-<<<<<<< HEAD
     def __init__(self,sec_plane):
-=======
-    def __init__(self,sec_plane):
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         # Make a new form (dialog)
         self.form = Meier_UI_Utility.UIForm("SPKCAM:.") 
         self.settings = []
@@ -390,11 +292,7 @@ class SettingsControl():
                     if entry in rutinas_corte:
                         self.activecycle = entry
                     else:
-<<<<<<< HEAD
                         if entry not in ["spkuser","spkid","spkname","spkgname"]: 
-=======
-                        if entry != "spkuser": 
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                             rutinas_corte.update(eval(rs.GetDocumentData(REGISTRY_SECTION,entry)))
                             self.activecycle = entry
         
@@ -416,15 +314,11 @@ class SettingsControl():
             if key != item_to_delete:
                 line = {}
                 line[key] = rutinas_corte[key]
-<<<<<<< HEAD
                 
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                 filep.write(str(line)+"\n")
                 
         filep.close()
                 
-<<<<<<< HEAD
     def text_settings(self,item,simple,settings=False):
         
         if not settings:
@@ -435,13 +329,6 @@ class SettingsControl():
         if isinstance(itemdata, dict) != True:
             itemdata = eval(itemdata)
             
-=======
-    def text_settings(self,item,simple):
-        
-        itemdata = self.settings[item]
-        if isinstance(itemdata, dict) != True:
-            itemdata = eval(itemdata)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         textitem = str(item) + ":\n"
         simpletext = textitem
         spoint = itemdata["point"]
@@ -502,20 +389,12 @@ class SettingsControl():
     def addControls(self):
         # The controls get added to the panel of the form
         p = self.form.panel
-<<<<<<< HEAD
         p.addPictureBox("picbox1", "./Logo-SPK-Small.png", False)
         p.addLabel("", " "*60, (50, 50, 50), False)
         p.addButton("Ayuda", "Layer de Ayuda",100, True, self.buttonAyuda_OnButtonPress)
         #p.addLabel("", "//Cargara un layer de Ayuda en Rhino", (50, 50, 50), True)
         p.addLabel("", "LINARAND SPK:. Generador CodigoG 1.b 2015",(100, 100, 100), True)
         p.addLinkLabel("", "www.spkautomatizacion.com", "http://www.spkautomatizacion.com", True, None)
-=======
-        p.addPictureBox("picbox1", "./Logo-SPK-Small.png", True)
-        p.addLabel("", "LINARAND SPK:. Generador CodigoG 1.b 2015",(100, 100, 100), True)
-        p.addLinkLabel("", "www.spkautomatizacion.com", "http://www.spkautomatizacion.com", True, None)
-        p.addButton("Ayuda", "Ayuda",50, False, self.buttonAyuda_OnButtonPress)
-        p.addLabel("", "//Cargara un layer de Ayuda en Rhino", (50, 50, 50), True)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         p.addSeparator("sep1", 130, False)
         p.addLabel("", "Configuracion General", (50, 50, 50), False)
         p.addSeparator("sep2", 126, True)
@@ -528,7 +407,6 @@ class SettingsControl():
         p.addSeparator("sep1", 130, False)
         p.addLabel("", "Rutina de maquinado", (50, 50, 50), False)
         p.addSeparator("sep1", 130, True)
-<<<<<<< HEAD
         p.addComboBox("combo1",self.cycles, self.cycles.index(self.activecycle),False, self.combo1_SelectedIndexChanged)
         p.addLabel("", " "*40, (50, 50, 50), False)
         p.addButton("button0", "Guardar",55,False, self.button0_OnButtonPress)
@@ -536,20 +414,11 @@ class SettingsControl():
         p.addLabel("cycleInfo",self.text_settings(self.activecycle,True), (0, 0, 0), True)
         #p.addLabel("", "", (50, 50, 50), True)
         p.addButton("showbutton", "Configuracion completa",140, True, self.showbutton_OnButtonPress)
-=======
-        p.addComboBox("combo1",self.cycles, self.cycles.index(self.activecycle), False, self.combo1_SelectedIndexChanged)
-        p.addLabel("", " "*50, (50, 50, 50), False)
-        p.addButton("button1", "Borrar",50, True, self.button1_OnButtonPress)
-        p.addLabel("cycleInfo",self.text_settings(self.activecycle,True), (0, 0, 0), True)
-        p.addLabel("", "", (50, 50, 50), True)
-        p.addButton("showbutton", "Mostrar todos",150, True, self.showbutton_OnButtonPress)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         p.addSeparator("sep1", 130, False)
         p.addLabel("", "Configuracion Archivo", (50, 50, 50), False)
         p.addSeparator("sep2", 126, True)
         p.addCheckBox("check1", "Personalizar rutina", False, False, self.check1_CheckStateChanged)
         p.addLabel("", "//Modifica y guarda la rutina en este archivo", (50, 50, 50), True)
-<<<<<<< HEAD
         p.addCheckBox("check2", "Autonambrar Archivo", self.autonameStart, False, self.check2_CheckStateChanged)
         p.addLabel("", "//Le da nombre y lo guarda junto al .3dm", (50, 50, 50), True)
         p.addCheckBox("check3", "Subir a la nube", self.upload, False, self.check3_CheckStateChanged)
@@ -558,19 +427,6 @@ class SettingsControl():
         p.addSeparator("sep2", 126, True)
         p.addLabel("", " "*82, (50, 50, 50), False)
         p.addButton("OK","OK",110, False,None)
-=======
-        p.addCheckBox("check0", "Guardar rutina", False, False, self.check0_CheckStateChanged)
-        p.addLabel("", "//Guarda la rutina en la base de datos de SPK:.", (50, 50, 50), True)
-        p.addCheckBox("check2", "Autonombrar archivo", self.autonameStart, False, self.check2_CheckStateChanged)
-        p.addLabel("", "//Guarda en tu carpeta actual", (50, 50, 50), True)
-        p.addCheckBox("check3", "Subir a la nube", self.upload, False, self.check3_CheckStateChanged)
-        p.addLabel("", "//Archivos temporales en ", (50, 50, 50), False)
-        p.addLinkLabel("", "SPKCLoud", "http://www.spkautomatizacion.com",True, None)
-        p.addSeparator("sep2", 126, True)
-        p.addLabel("", " "*82, (50, 50, 50), False)
-        p.addButton("OK","OK",110, False,None)
-        
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         #p.addCheckBox("check3", "Autonombrar", True, True, self.check1_CheckStateChanged)
     # ====================== Delegates =====================
     # Called when the box is checked or unchecked
@@ -617,7 +473,6 @@ class SettingsControl():
         
         rs.MessageBox(self.text_settings(self.activecycle,False),0,"Parametros de corte")
 
-<<<<<<< HEAD
     def button0_OnButtonPress(self,sender,e):
         
         line = {}
@@ -634,14 +489,11 @@ class SettingsControl():
         rs.MessageBox("La rutina %s se ha guardado en la base de datos con exito." % self.activecycle,0,"Rutina Guardada")
 
         
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     def button1_OnButtonPress(self, sender, e):
         try:
             c = self.form.panel.Controls.Find("combo1", True)[0]
             item = c.SelectedItem
             self.form.ResumeLayout(False)
-<<<<<<< HEAD
             self.delete_cycle_settings(item)
             try:
                 rs.DeleteDocumentData(REGISTRY_SECTION,item)
@@ -650,12 +502,6 @@ class SettingsControl():
             rs.MessageBox("La rutina %s se ha eliminado con exito \n\n Cierra y abre el SPKCAM:. para ver los cambios." % item,0,"Rutina Borrada")
         except:
             rs.MessageBox("Oh oh algo salio mal. No se pudo borrar la rutina %s" % item,0,"Error")
-=======
-            print item + " se ha elimiado."
-            self.delete_cycle_settings(item)
-        except:
-            pass
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     # Called when the button is pressed
     
     def buttonAyuda_OnButtonPress(self, sender, e):
@@ -752,17 +598,10 @@ class g_open_curve():
         curve_gcode = []
         curve_preview =[]
         
-<<<<<<< HEAD
         polycurve = rs.ConvertCurveToPolyline(self.curve,0.5,0.01,False,0.1)
         point_curve = rs.CurvePoints(polycurve)
 
         if self.cero_pass.lower().strip() == "si":
-=======
-        polycurve = rs.ConvertCurveToPolyline(self.curve,0.5,0.01,False)
-        point_curve = rs.CurvePoints(polycurve)
-
-        if self.cero_pass == "si":
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
             start_level = 0
         else:
             start_level = 1
@@ -861,10 +700,7 @@ class g_curve():
             rs.DeleteObject(inside_offset)
         except:
             pass
-<<<<<<< HEAD
         
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         return cut_curve
 
         
@@ -952,11 +788,7 @@ class g_curve():
             plunge_points = rs.DivideCurveLength(plunge_curve[0],PLUNGE_PRECISION)
             depth_pass_plunge = (self.depth_pass)/len(plunge_points)
             
-<<<<<<< HEAD
             if level == 0 and self.cero_pass.lower().strip() =="si":
-=======
-            if level == 0 and self.cero_pass =="si":
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                 
                 mini_param = domain[0]
                 mini_param_2 = ((self.plunge_mm*(level+1))*domain[1])/length
@@ -1019,11 +851,7 @@ class g_curve():
                 new_plunge_points = []
                 z_value = 0
                 
-<<<<<<< HEAD
                 if self.cero_pass.lower().strip() == "no" and level == 0:
-=======
-                if self.cero_pass == "no" and level == 0:
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                     depth_pass_plunge = ((self.depth_pass+self.aproach))/len(plunge_points)
                     for point in plunge_points:
                         aproach_points.append((point[0],point[1],point[2]+self.aproach))
@@ -1069,27 +897,15 @@ class g_curve():
             rs.DeleteObjects(plunge_curve)
             rs.DeleteObject(original_level_cut)
             rs.DeleteObject(self.cut_curve)
-<<<<<<< HEAD
         if self.pocketing and self.cero_pass.lower().strip() == "no":
-=======
-        if self.pocketing and self.cero_pass == "no":
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                 rs.DeleteObjects(offset_curves)
         return curves_gcode,level_preview
 
 class batch():
     
-<<<<<<< HEAD
     def __init__(self,objects,sec_plane,ui):
         
         self.ui = ui
-=======
-    def __init__(self,objects,sec_plane):
-        
-        
-        self.ui = SettingsControl(35)
-        Rhino.UI.Dialogs.ShowSemiModal(self.ui.form)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         self.preset = self.ui.settings[str(self.ui.activecycle)]
         self.activecycle = self.ui.activecycle
         self.name = self.ui.activecycle
@@ -1097,10 +913,6 @@ class batch():
             self.preset = eval(self.preset)
         self.general_input_data = self.ui.general_input
         self.editcycle = self.ui.editcycle
-<<<<<<< HEAD
-=======
-        self.savenew = self.ui.savenew
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         self.upload = self.ui.upload
         self.previewobjects = []
         self.textsettings = self.ui.textsettings
@@ -1138,10 +950,6 @@ class batch():
             y_distance = sorted(points_y)[0]
             x = sorted(points_x)[-1] - x_distance
             y = sorted(points_y)[-1] - y_distance
-<<<<<<< HEAD
-=======
-            print x_distance, y_distance
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
             textinfo += "Dimensiones material: X%smm Y%smm \n" % (round(x,2),round(y,2))
             textinfo += "Posicion del material: X%smm Y%smm \n" % (round(x_distance,2),round(y_distance,2))
         
@@ -1150,22 +958,12 @@ class batch():
         
     def process(self):
         
-<<<<<<< HEAD
         if self.editcycle:
             self.name = self.name_input()
             if self.name in self.ui.cycles:
                 self.name = self.name + "_Copia"
             self.get_input()
             self.textsettings = self.ui.text_settings(self.name,False,self.preset)
-=======
-        if self.savenew and not self.editcycle:
-            self.save_settings()
-        if self.editcycle and not self.savenew:
-            self.name = self.name_input()
-            self.get_input()
-        if self.editcycle and self.savenew:
-            self.save_settings()
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
             
         self.process_objects()
         self.make_clusters()
@@ -1193,13 +991,8 @@ class batch():
                         closestpoint = rs.EvaluateSurface(planar_surface,uvparam[0],uvparam[1])
                         
                         vector = rs.VectorCreate(point.point,closestpoint)
-<<<<<<< HEAD
                       
                         
-=======
-                        print "vector"
-                        print vector[0],vector[1]
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
                         if rs.ProjectPointToSurface(point.point,planar_surface,(0,0,1)):
                         #if rs.IsPointOnSurface(planar_surface,rs.PointCoordinates(point.point)):
                         #if abs(vector[0]) <= CLUSTER_TOLERANCE and abs(vector[1]) <= CLUSTER_TOLERANCE:
@@ -1273,11 +1066,8 @@ class batch():
         
         line = {}
         nombre = self.name_input()
-<<<<<<< HEAD
         if nombre in self.ui.cycles:
             nombre = nombre + "_Copia"
-=======
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         line[nombre] = json.dumps(self.preset)
         archivo_rutinas = open(PATH_RUTINAS,"a")
         archivo_rutinas.write(str(line) + "\n")
@@ -1351,7 +1141,6 @@ class batch():
         ccurvespocketing = []
         
         for point in self.points:
-<<<<<<< HEAD
             try:
                 cpoints.append(g_point(point,self.preset["point"],self.general_input_data))
             except:
@@ -1385,26 +1174,6 @@ class batch():
             except:
                 rs.MessageBox("Hay un error en una de tus curvas exteriores. \n\n Revisa bien tu archivo antes de cortar.")
         self.curves_outside = self.sort_curves_area(ccurvesoutside)
-=======
-            cpoints.append(g_point(point,self.preset["point"],self.general_input_data))
-            self.points = self.sort_points(cpoints)
-            
-        for curve in self.curves_open:
-            cengraving.append(g_open_curve(curve,self.preset["engraving"],self.general_input_data))
-            self.curves_open = self.sort_curves(cengraving)
-            
-        for curve in self.curves_pocketing:
-            ccurvespocketing.append(g_curve(curve,self.preset["pocketing"],self.general_input_data,-1))
-            self.curves_pocketing = self.sort_curves(ccurvespocketing)
-            
-        for curve in self.curves_inside:
-            ccurvesinside.append(g_curve(curve,self.preset["curve"],self.general_input_data,-1))
-            self.curves_inside = self.sort_curves(ccurvesinside)
-            
-        for curve in self.curves_outside:
-            ccurvesoutside.append(g_curve(curve,self.preset["curve"],self.general_input_data,1))
-            self.curves_outside = self.sort_curves_area(ccurvesoutside)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
         
     def get_input(self):
          
@@ -1428,33 +1197,7 @@ class batch():
         items = POINT_INPUT_VALUES
         input_data = rs.PropertyListBox(items,self.preset["point"],"Barrenos .....","Configuracion de barrenado")
         return input_data
-<<<<<<< HEAD
 
-=======
-    
-    def user_input(self):
-        
-        
-        try:
-            spkuser = rs.GetDocumentData(REGISTRY_SECTION,"spkuser")
-        except:
-            spkuser = ""
-        
-        input_data = rs.StringBox ("Usuario SPK:",spkuser,"Usuario")
-        rs.SetDocumentData(REGISTRY_SECTION,"spkuser",input_data)
-        return input_data
-    
-    
-    def write_registry(self):
-        
-        line = {}
-        line[self.name] = self.preset
-        self.delete_registry()
-        rs.SetDocumentData(REGISTRY_SECTION,self.name,str(line))
-        rs.SetDocumentData(REGISTRY_SECTION,"GI",str(self.general_input_data))
-
-    
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     def name_input(self):
     
         input_data = rs.StringBox ("Nombre base de datos:",self.name,"Guardar rutina en base de datos")
@@ -1483,7 +1226,6 @@ def Main():
     objects = colect_objects()
     
     if objects:
-<<<<<<< HEAD
         ui = SettingsControl(35)
         result = Rhino.UI.Dialogs.ShowSemiModal(ui.form)
         if result == System.Windows.Forms.DialogResult.OK:
@@ -1532,19 +1274,6 @@ def Main():
                     else:
                         upload_to_server(file_path,settings_path,image_path,image_path_2,input_data[0],new_batch.price,"False",input_data[1],input_data[2])
                 print "Feliz corte"
-=======
-        sec_plane = get_sec_plane(objects)
-        new_batch = batch(objects,sec_plane)
-        new_batch.process()
-        gcode = new_batch.make_code()
-        file_path =save_file(gcode,new_batch.general_input_data[2])
-        image_path,image_path_2 =  save_image(file_path,new_batch.previewobjects)
-        settings_path = save_settings_file(file_path,new_batch.textsettings,"Configuracion")
-        info_path = save_settings_file(file_path,new_batch.textinfo,"Info")
-        if new_batch.upload:
-            user = new_batch.user_input()
-            upload_to_server(file_path,settings_path,image_path,image_path_2,user,new_batch.price)
->>>>>>> 8306cd654176d844586ce4256d451e9c46c26b12
     else:
         print "nope"
         ui = SettingsControl(6)
