@@ -15,7 +15,7 @@ Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos ac
 
 ###Instalación Windows:
 
-Para instalar el SPKCAM:. es necesario contar con Rhino5 SR9 o superior. Basta con descomprimir el archivo ZIP y ejecutar el comando _RunPythonScript en Rhino y seleccionar el archivo SPKCAM.py que acabamos de descomprimir.<br>
+La instalación de SPKCAM:. requiere Rhino5 SR9 o superior. Basta con descomprimir el archivo ZIP y ejecutar el comando _RunPythonScript en Rhino y seleccionar el archivo SPKCAM.py que acabamos de descomprimir.<br>
 
 Para habilitar la función de "subir a la nube" y hacer de SPKCAM un comando de Rhino es necesario seguir estos pasos:<br>
 
