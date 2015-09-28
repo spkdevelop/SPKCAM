@@ -21,12 +21,12 @@ Para hacer funcionar el plugin de SPKCAM es necesario contar una versión de Rhi
 
 
 Para hacer una instalación persistente de SPKCAM:. en tu Rhino es necesario seguir estos pasos:
-1. Descarga la carpeta ZIP de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> SPKCAM:. </a>.
-2. Descomprime la carpeta en algun lugar seguro. Ej. "C://Program Files/Rhino5 64 bits/Plugins/SPKCAM"
-3. Desacargar la ultima version de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a>
-4. Durante la instalación seleccionada la opcion de añadir PYTHONPATH to WINDOWSPATH al igual que instalar "pip"
-5. Reinicia tu computadora.
-6. Abre Rhino 5 y ve a tools/options/aliases "add new alias"
-7. Crea un nuevo alias con el nombre "SPKCAM" y el comando "-_RunPythonScript ("C:Tu usuario/")"
-8. Una vez creado el alias podrás escribir el comando SPKCAM en la pantalla de rhino y la aparece la interfaz de usuario.
+1. Descarga la carpeta ZIP de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> SPKCAM:. </a>.<br>
+2. Descomprime la carpeta en algun lugar seguro. Ej. "C://Program Files/Rhino5 64 bits/Plugins/SPKCAM"<bt>
+3. Desacargar la ultima version de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a><br>
+4. Durante la instalación seleccionada la opcion de añadir PYTHONPATH to WINDOWSPATH al igual que instalar "pip"<br>
+5. Reinicia tu computadora.<br>
+6. Abre Rhino 5 y ve a tools/options/aliases "add new alias"<br>
+7. Crea un nuevo alias con el nombre "SPKCAM" y el comando "-_RunPythonScript ("C:Tu usuario/")"<br>
+8. Una vez creado el alias podrás escribir el comando SPKCAM en la pantalla de rhino y la aparece la interfaz de usuario.<br>
 
