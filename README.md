@@ -22,7 +22,7 @@ Para habilitar la función de "subir a la nube" y hacer de SPKCAM un comando de 
 1. Descarga la carpeta ZIP de <a href="https://github.com/utitankaspk/SPKCAM/archive/master.zip"> SPKCAM:. </a>.<br>
 2. Descomprime la carpeta en algun lugar seguro. Ej. "C:\Program Files\Rhinoceros 5 (64-bit)\Plug-ins\SPKCAM".<br>
 3. Desacargar la ultima versión de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a>.<br>
-4. Durante la instalación selecciona las opciónes: añadir PYTHONPATH to WINDOWSPATH y instalar "pip"<br>
+4. Durante la instalación selecciona las opciónes: añadir PYTHONPATH to WINDOWSPATH e instalar "pip"<br>
 5. Reinicia tu computadora.<br>
 6. Abre Rhino 5 y ve a tools/options/aliases "add new alias".<br>
 7. Crea un nuevo alias con el nombre "SPKCAM" y el comando:<br>
