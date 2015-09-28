@@ -19,7 +19,7 @@ La instalación de SPKCAM:. requiere Rhino5 SR9 o superior. Basta con descomprim
 
 Para habilitar la función de "subir a la nube" y hacer de SPKCAM un comando de Rhino es necesario seguir estos pasos:<br>
 
-1. Descarga la carpeta ZIP de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> SPKCAM:. </a>.<br>
+1. Descarga la carpeta ZIP de <a href="https://github.com/utitankaspk/SPKCAM/archive/master.zip"> SPKCAM:. </a>.<br>
 2. Descomprime la carpeta en algun lugar seguro. Ej. "C:\Program Files\Rhinoceros 5 (64-bit)\Plug-ins\SPKCAM".<br>
 3. Desacargar la ultima versión de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a>.<br>
 4. Durante la instalación selecciona las opciónes: añadir PYTHONPATH to WINDOWSPATH y instalar "pip"<br>
