@@ -18,11 +18,13 @@ Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos ac
 Para instalar el SPKCAM:. es necesario contar con Rhino5 SR9 o superior. Basta con descomprimir el archivo ZIP y ejecutar el comando _RunPythonScript en Rhino yseleccionar el archivo SPKCAM.py que acabamos de descomprimir. Para habilitar la función de "subir a la nube" es necesario seguir estos pasos:<br>
 
 1. Descarga la carpeta ZIP de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> SPKCAM:. </a>.<br>
-2. Descomprime la carpeta en algun lugar seguro. Ej. "C://Program Files/Rhino5 64 bits/Plugins/SPKCAM"<bt>
-3. Desacargar la ultima version de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a><br>
-4. Durante la instalación seleccionada la opcion de añadir PYTHONPATH to WINDOWSPATH al igual que instalar "pip"<br>
+2. Descomprime la carpeta en algun lugar seguro. Ej. "C:\Program Files\Rhinoceros 5 (64-bit)\Plug-ins\SPKCAM"<br>
+3. Desacargar la ultima versión de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a><br>
+4. Durante la instalación selecciona las opciónes: añadir PYTHONPATH to WINDOWSPATH y instalar "pip"<br>
 5. Reinicia tu computadora.<br>
 6. Abre Rhino 5 y ve a tools/options/aliases "add new alias"<br>
-7. Crea un nuevo alias con el nombre "SPKCAM" y el comando "-_RunPythonScript ("C:Tu usuario/")"<br>
+7. Crea un nuevo alias con el nombre "SPKCAM" y el comando<br>
+  "-_RunPythonScript ("C:\Program Files\Rhinoceros 5 (64-bit)\Plug-ins\SPKCAM\SPKCAM.py")"<br>
+Reemplaza la ruta del archivo con tu información.<br>
 8. Una vez creado el alias podrás escribir el comando SPKCAM en la pantalla de rhino y la aparece la interfaz de usuario.<br>
 
