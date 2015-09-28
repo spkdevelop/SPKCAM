@@ -13,14 +13,10 @@ Cyan: Perímetro del material<br>
 
 Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. Esta es una versión no apta al público en general pero te damos la bienvenida a probarlo bajo tu propia responsabilidad.
 
-###Instalación:
-Actualmente solo funciona en Windows. 
+###Instalación Windows:
 
-Para hacer funcionar el plugin de SPKCAM es necesario contar una versión de Rhino5 con paquete SR9 o superior. Basta con descomprimir el archivo ZIP y ejecutar el comando _RunPythonScript en Rhino y seleccionar el archivo SPKCAM.py en la carpeta recien descomprimida. Es probable que la funcion de "subir a la nube" marque un error, esto quiere decir que hace falta instalar Python 2.7 en tu computadora. 
+Para instalar el SPKCAM:. es necesario contar con Rhino5 SR9 o superior. Basta con descomprimir el archivo ZIP y ejecutar el comando _RunPythonScript en Rhino yseleccionar el archivo SPKCAM.py que acabamos de descomprimir. Para habilitar la función de "subir a la nube" es necesario seguir estos pasos:<br>
 
-
-
-Para hacer una instalación persistente de SPKCAM:. en tu Rhino es necesario seguir estos pasos:
 1. Descarga la carpeta ZIP de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> SPKCAM:. </a>.<br>
 2. Descomprime la carpeta en algun lugar seguro. Ej. "C://Program Files/Rhino5 64 bits/Plugins/SPKCAM"<bt>
 3. Desacargar la ultima version de <a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi"> Python 2.7 </a><br>
