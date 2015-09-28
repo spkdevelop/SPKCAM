@@ -23,8 +23,8 @@ Para instalar el SPKCAM:. es necesario contar con Rhino5 SR9 o superior. Basta c
 4. Durante la instalación selecciona las opciónes: añadir PYTHONPATH to WINDOWSPATH y instalar "pip"<br>
 5. Reinicia tu computadora.<br>
 6. Abre Rhino 5 y ve a tools/options/aliases "add new alias"<br>
-7. Crea un nuevo alias con el nombre "SPKCAM" y el comando<br>
+7. Crea un nuevo alias con el nombre "SPKCAM" y el comando:<br>
   "-_RunPythonScript ("C:\Program Files\Rhinoceros 5 (64-bit)\Plug-ins\SPKCAM\SPKCAM.py")"<br>
 Reemplaza la ruta del archivo con tu información.<br>
-8. Una vez creado el alias podrás escribir el comando SPKCAM en la pantalla de rhino y la aparece la interfaz de usuario.<br>
+8. Una vez creado el alias podrás escribir el comando "SPKCAM" en la pantalla de Rhino 5 para iniciar el Plugin.<br>
 
