@@ -1,12 +1,12 @@
 # SPKCAM:.
-Es un plugin de Rhino5 que te permite generar codigo-g a través de un código de color y subirlo automáticamente a la nube de SPK:. También cuenta con un sistema de detección de piezas (imagen 3) y una base de datos con velocidades sugeridas de corte según cada material.
+Es un plugin de Rhino5 que te permite generar codigo-g con dibujos 2D a través de un código de color que se asigna a cada curva segun la compensación de la herramienta deseada. Puedes subir directamente tus archivos  a la nube de SPK:. para enviarlos a corte con el plugin de SPKClient. También cuenta con un sistema de detección de piezas y una base de datos con velocidades sugeridas de corte según cada material.
 
 ###Código Color:
 
-Para asignar el color se debe utilizar la paleta de color de Rhino.
+Para asignar el color se debe utilizar la paleta de color de Rhino.<br><br>
 Azul (BLUE, rgb (0,0,255): Compensación externa<br>
 Rojo (RED, rgb (255,0,0): Compensación interna<br>
-Verde: (GREEN, rgb (0,255,0)Grabado sobre linea<br>
+Verde: (GREEN, rgb (0,255,0): Grabado sobre linea<br>
 Magenta (MAGENTA, rgb (0,255,255): Caja<br>
 
 ###Versión Beta:
