@@ -11,7 +11,7 @@ Es un plugin de Rhino5 que te permite generar codigo-g con dibujos 2D a través 
 
 ###Versión Beta:
 
-Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. No es apto para todo tipo de maquinaria CNC esta enfocado para controladores GRBL como Arduino y TinyG por lo que su uso es responsabilidad del usuario final y no nos hacemos responsables por ningún tipo de daño directo o indirecto que pueda causar el programa.
+Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. No es apto para todo tipo de maquinaria CNC. Esta enfocado para controladores GRBL como Arduino y TinyG por lo que su uso es responsabilidad del usuario final y no nos hacemos responsables por ningún tipo de daño directo o indirecto que pueda causar el programa.
 
 ###Instalación Windows:
 
