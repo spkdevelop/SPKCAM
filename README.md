@@ -21,5 +21,5 @@ IronPython http://ironpython.net<br><br>
 
 ###Comandos Rhino5:
 
-	Spkcam (Abre la interfaz grafica del generador de codigo-g)<br>
-	Spkcam_gcode_preview (Te permite visualizar archivos de codigo-g ya generados)<br>
+	Spkcam (Abre la interfaz grafica del generador de codigo-g)
+	Spkcam_gcode_preview (Te permite visualizar archivos de codigo-g ya generados)
