@@ -3,11 +3,11 @@
 
 ###Código Color:
 
-	Para asignar el color se debe utilizar la paleta de color de Rhino.
-	Azul (BLUE, rgb (0,0,255): Compensación externa
-	Rojo (RED, rgb (255,0,0): Compensación interna
-	Verde: (GREEN, rgb (0,255,0): Grabado sobre linea
-	Magenta (MAGENTA, rgb (0,255,255): Caja
+ Para asignar el color se debe utilizar la paleta de color de Rhino.
+ Azul (BLUE, rgb (0,0,255): Compensación externa
+ Rojo (RED, rgb (255,0,0): Compensación interna
+ Verde: (GREEN, rgb (0,255,0): Grabado sobre linea
+ Magenta (MAGENTA, rgb (0,255,255): Caja
 
 ###Versión Beta:
 
