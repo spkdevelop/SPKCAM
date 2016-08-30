@@ -17,7 +17,7 @@ Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos ac
 
 La instalación de SPKCAM:. requiere los siguientes programas:<br>
 Rhino 5 https://www.rhino3d.com<br>
-IronPython http://ironpython.net<br>
+IronPython http://ironpython.net (Actualizarlo resuelve problemas de login en win10) <br>
 
 ###Comandos Rhino5:
 
