@@ -3,7 +3,7 @@ Es un plugin de Rhino5 que te permite generar codigo-g con dibujos 2D a través 
 
 ###Código Color:
 
- Para asignar el color se debe utilizar la paleta de color de Rhino.<br><br>
+ Para asignar el color se debe utilizar la paleta de Rhino.<br><br>
  Azul (BLUE, rgb (0,0,255): Compensación externa<br>
  Rojo (RED, rgb (255,0,0): Compensación interna<br>
  Verde: (GREEN, rgb (0,255,0): Grabado sobre linea<br>
