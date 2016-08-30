@@ -15,10 +15,10 @@ Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos ac
 
 ###Instalación Windows:
 
-La instalación de SPKCAM:. requiere los siguientes programas:
-Rhino 5 https://www.rhino3d.com
-IronPython http://ironpython.net
+La instalación de SPKCAM:. requiere los siguientes programas:<br>
+Rhino 5 https://www.rhino3d.com<br>
+IronPython http://ironpython.net<br><br>
 
-Una vez instalado abre Rhino y ejecuta los siguientes comandos:
-	Spkcam (Abre la interfaz grafica del generador de codigo-g)
-	Spkcam_gcode_preview (Te permite visualizar archivos de codigo-g ya generados)
+Una vez instalado abre Rhino y ejecuta los siguientes comandos:<br>
+	Spkcam (Abre la interfaz grafica del generador de codigo-g)<br>
+	Spkcam_gcode_preview (Te permite visualizar archivos de codigo-g ya generados)<br>
