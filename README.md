@@ -15,6 +15,8 @@ Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos ac
 
 ###Instalación Windows:
 
+<a href="https://github.com/utitankaspk/SPKCAM/raw/master/Spkcam_v1.6.29.08.2016_for_Rhino5.0_Win64-32_Installer.rhi">Descarga el nuevo instalador para Windows 64 y 32bits </a><br>
+
 La instalación de SPKCAM:. requiere los siguientes programas:<br>
 Rhino 5 https://www.rhino3d.com<br>
 IronPython http://ironpython.net (Actualizarlo resuelve problemas de login en win10) <br>
