@@ -6,13 +6,28 @@ import os
 import random
 import string
 import json
+import rhinoscriptsyntax as rs
+import Rhino
 import time
 ID_FILENAME="login_session_token"
 #URL="http://localhost:8080"
 #URL="https://spksandbox.appspot.com"
 URL="https://spkcloud.appspot.com"
 
-ID_FILE=os.path.join(os.path.dirname(os.path.abspath(__file__)),ID_FILENAME)
+local_path = os.path.dirname(os.path.realpath(__file__))
+if "Rhino" in local_path:
+    spkcam_id = Rhino.PlugIns.PlugIn.IdFromName("Spkcam")
+    plugin = Rhino.PlugIns.PlugIn.Find(spkcam_id)
+    appdata_path = os.path.split(plugin.Assembly.Location)[0]
+    roaming_folder = os.getenv('APPDATA')
+    local_install = True if roaming_folder in appdata_path else False
+    if not local_install:
+        local_path = os.path.join(roaming_folder,"\\".join(appdata_path.split("\\")[3:]))
+    else:
+        local_path = appdata_path
+
+
+ID_FILE=os.path.join(local_path,"res","Settings",ID_FILENAME)
 
 #devuelve el string que se debe mandar al comunicarse con el servidor (con el nombre "spkcam_session_token") o None si no se inicio sesion. Nota: ya no es necesario mandar la variable 'author' al subir productos, el servidor lo saca de aqui.
 def get_login_token():
