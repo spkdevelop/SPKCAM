@@ -1,40 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Spkcam by utitankaspk</title>
+    <meta name="description" content="Spkcam : Plugin de Rhino5 que te permite generar codigo-g.">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Spkcam</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Spkcam</h1>
-        <p>Plugin de Rhino5 que te permite generar codigo-g.</p>
 
-        <p class="view"><a href="https://github.com/utitankaspk/SPKCAM">View the Project on GitHub <small>utitankaspk/SPKCAM</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/spkdevelop/SPKCAM">View on GitHub</a>
 
+          <h1 id="project_title">Spkcam</h1>
+          <h2 id="project_tagline">Plugin de Rhino5 que te permite generar codigo-g.</h2>
 
-        <ul>
-          <li><a href="https://github.com/utitankaspk/SPKCAM/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/utitankaspk/SPKCAM/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/utitankaspk/SPKCAM">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/spkdevelop/SPKCAM/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/spkdevelop/SPKCAM/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="spkcam" class="anchor" href="#spkcam" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SPKCAM:.</h1>
 
 <p>Es un plugin de Rhino5 que te permite generar codigo-g. Funciona con curvas en 2D y puntos. Para asignar la compensación de la herramienta a cada curva se debe cambiar el color del objeto (no del layer) según el código de color de SPK.</p>
 
 <h3>
-<a id="código-color-spk" class="anchor" href="#c%C3%B3digo-color-spk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Código Color SPK:</h3>
+<a id="código-color" class="anchor" href="#c%C3%B3digo-color" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Código Color:</h3>
 
 <p>Para asignar el color se debe utilizar la paleta de Rhino.<br><br>
  Azul (BLUE, rgb (0,0,255): Compensación externa<br>
@@ -43,7 +46,7 @@
  Magenta (MAGENTA, rgb (0,255,255): Caja <br></p>
 
 <h3>
-<a id="configuraciónes" class="anchor" href="#configuraci%C3%B3nes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuraciónes:</h3>
+<a id="nueva-versión" class="anchor" href="#nueva-versi%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Nueva versión:</h3>
 
 <p>-Sube directamente los archivos a la nube de SPK desde Rhino.<br>
 -Autodetección de piezas.<br>
@@ -56,8 +59,9 @@
 <p><a href="https://github.com/utitankaspk/SPKCAM/raw/master/Spkcam_v1.6.29.08.2016_for_Rhino5.0_Win64-32_Installer.rhi">Descarga el nuevo instalador para Windows 64 y 32bits </a><br></p>
 
 <p>La instalación de SPKCAM:. requiere los siguientes programas:<br>
-Rhino 5 <a href="https://www.rhino3d.com">https://www.rhino3d.com</a><br>
-IronPython <a href="http://ironpython.net">http://ironpython.net</a> (Actualizarlo resuelve problemas de login en win10) <br></p>
+-Rhino 5 <a href="https://www.rhino3d.com">https://www.rhino3d.com</a><br>
+-IronPython <a href="http://ironpython.net">http://ironpython.net</a> (Actualizarlo resuelve problemas de login en win10) <br><br>
+<b>NOTA:</b> Algunos SRL de Rhino no son compatibles con IronPython2.7.6. Instalar la <a href="https://drive.google.com/file/d/0B02fjLQVN51aT1BSc21pTUNyaFE/view?usp=sharing">versión 2.7.5</a> resuelve el problema. (Verifica que puedas correr "RunPythonScript" en la consola de Rhino)<br> </p>
 
 <h3>
 <a id="comandos-rhino5" class="anchor" href="#comandos-rhino5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Comandos Rhino5:</h3>
@@ -67,24 +71,21 @@ Spkcam_gcode_preview #(Te permite visualizar archivos de codigo-g ya generados)
 </code></pre>
 
 <h3>
-<a id="capturas-de-pantalla" class="anchor" href="#capturas-de-pantalla" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Capturas de pantalla:</h3>
-
-<p>Plugin:<br>
-<img src="https://github.com/utitankaspk/SPKCAM/raw/master/src/Examples/Screenshots/screenshot_2.PNG" alt="spkcam_screenshot_2">
-Rhino:<br>
-<img src="https://github.com/utitankaspk/SPKCAM/raw/master/src/Examples/Screenshots/screenshot_1.PNG" alt="spkcam_screenshot_1"></p>
-
-<h3>
 <a id="versión-beta" class="anchor" href="#versi%C3%B3n-beta" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Versión Beta:</h3>
 
 <p>Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. No es apto para todo tipo de maquinaria CNC. Esta enfocado para controladores GRBL como Arduino y TinyG por lo que su uso es responsabilidad del usuario final y no nos hacemos responsables por ningún tipo de daño directo o indirecto que pueda causar el programa.</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/utitankaspk">utitankaspk</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Spkcam maintained by <a href="https://github.com/spkdevelop">spkdevelop</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
