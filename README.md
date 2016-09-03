@@ -20,8 +20,9 @@
 <a href="https://github.com/utitankaspk/SPKCAM/raw/master/Spkcam_v1.6.29.08.2016_for_Rhino5.0_Win64-32_Installer.rhi">Descarga el nuevo instalador para Windows 64 y 32bits </a><br>
 
 La instalación de SPKCAM:. requiere los siguientes programas:<br>
-Rhino 5 https://www.rhino3d.com<br>
-IronPython http://ironpython.net (Actualizarlo resuelve problemas de login en win10) <br>
+-Rhino 5 https://www.rhino3d.com<br>
+-IronPython http://ironpython.net (Actualizarlo resuelve problemas de login en win10) <br><br>
+<b>NOTA:</b> Algunos SRL de Rhino no son compatibles con IronPython2.7.6. Instalar la <a href="https://drive.google.com/file/d/0B02fjLQVN51aT1BSc21pTUNyaFE/view?usp=sharing" target="_blank">versión 2.7.5</a> resuelve el problema. (Verifica que puedas correr "RunPythonScript" en la consola de Rhino)<br> 
 
 ###Comandos Rhino5:
 
