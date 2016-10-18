@@ -29,6 +29,7 @@ import shutil
 import urllib2
 import threading
 import thread
+import json
 import System.Windows.Forms.DialogResult
 from lib import Meier_UI_Utility
 from lib import MultipartPostHandler
@@ -145,7 +146,10 @@ class SettingsControl():
         self.spkmodel_objects = None
         self.general_settings = {"sec_plane":6,"feed_rapid":3000,"cut_diam":6} if not generalSettings else generalSettings
         self.machining_settings = {} if not machiningSettings else machiningSettings
-        self.user_data = {"save_file":False,"spkcam_session_token":False,"material_info":False,"sort_closest":False,"user_data":False,"sorting":True,"name_url":False,"autocluster":True,"index_pause":False,"user_mail":False,"save_path":rs.DocumentPath().replace(".3dm","_gcode.txt") if rs.DocumentPath() else False,"selected_preset":False} if not userData else userData
+        self.user_data = {"technical_name":False,"save_file":False,"spkcam_session_token":False,"material_info":False,"sort_closest":False,"user_data":False,"sorting":True,"name_url":False,"autocluster":True,"index_pause":False,"user_mail":False,"save_path":rs.DocumentPath().replace(".3dm","_gcode.txt") if rs.DocumentPath() else False,"selected_preset":False} if not userData else userData
+        
+        if not self.user_data["technical_name"]: self.user_data["technical_name"]=  rs.DocumentName().replace(".3dm","_gcode")
+        if not self.user_data["name_url"]:self.user_data["name_url"] =  rs.DocumentName().replace(".3dm","")
         
         try:
             token = um.get_login_token()
@@ -233,8 +237,10 @@ class SettingsControl():
 
         p.addLabel("", " "*60, (50, 50, 50), True)
         p.addPictureBox("picbox2", IMAGE_FOLDER + "cloud.png", False)
-        p.addTextBox("name_url",self.user_data["name_url"] if self.user_data["name_url"] else "nombre/url:", 300, False, self.add_mail)
+        p.addTextBox("name_url",self.user_data["name_url"], 300, False, self.add_mail)
         p.addButton("upload_code", TXT["gt"],60, True, self.go_to_button)
+        p.addPictureBox("picbox2", IMAGE_FOLDER + "gcode.png", False)
+        p.addTextBox("technical_name",self.user_data["technical_name"], 300, True, self.add_technical_name)
         p.addPictureBox("picbox2", IMAGE_FOLDER + "upload.png", False)
         p.addButton("upload_code", TXT["nube"],200, False, self.upload_code_button)
         p.addCheckBox("save_file", TXT["pc"], False if not self.user_data["save_file"] else True, True, self.change_checkbox)
@@ -365,11 +371,19 @@ class SettingsControl():
         
         thread.start_new_thread(self.upload_thread,(False,False,self.save_image()))
     
+    def read_info_file(self,file_name):
+        file_path = os.path.join("\\".join(rs.DocumentPath().split("\\")[:-1]),file_name)
+        if os.path.isfile(file_path):
+            f = open(file_path)
+            info_file_path = json.loads(f.read())
+            f.close()
+            return info_file_path
+        else: return False
+    
     def upload_thread(self,threadName,delay,images):
     
         #url=requests.post(base_url,data={"script_password":script_password}).text.strip()
         #print url
-                    
         
         self.write_code_button(False, False)
         gcode_file = open(self.user_data["save_path"],"rb") 
@@ -385,12 +399,18 @@ class SettingsControl():
             "description": "SPKCAM:. Uploader",
             "labels":"spkcam_upload,temporal,upload",
             "technical_description_new_0":self.machining_settings[self.user_data["selected_preset"]]["material_info"]if self.user_data["selected_preset"] else gcode_file.read()[:50],
-            "g_code_name_new_0": "%s-%s" % (self.user_data["selected_preset"],self.user_data["save_path"].split("\\")[-1]),
+            "g_code_name_new_0": "%s-%s" % (self.user_data["selected_preset"],self.user_data["save_path"].split("\\")[-1]) if not self.user_data["technical_name"] else self.user_data["technical_name"],
             "new_gcode_file_0":gcode_file,
             }
         
+        drive_info = self.read_info_file("spkcam_data.txt")
+        if drive_info: 
+            data["drive_folder"]=drive_info["drive_id"]
+            data["labels"] = "%s,%s" % (data["labels"],drive_info["labels"])
+            data["description"]=drive_info["description"]
+            
         openimages = []
-        
+       
         if spk_page in self.user_data["name_url"]:
             data["pid"] = self.user_data["name_url"].split("/")[-1]
 
@@ -492,6 +512,9 @@ class SettingsControl():
         
     def add_mail(self,sender,e):
         self.user_data[sender.Name] =  sender.Text.replace("mail:","").replace("nombre/url:","").strip()
+    
+    def add_technical_name(self,sender,e):
+        self.user_data[sender.Name] =  sender.Text
     
     def file_name_button(self,sender,e):
         save_path = rs.SaveFileName(TXT["save_file"],None, rs.DocumentPath() if not self.user_data["save_path"] else self.user_data["save_path"] ,"%s_gcode" % rs.DocumentName().replace(".3dm",""), ".txt")

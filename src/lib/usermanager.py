@@ -15,6 +15,7 @@ ID_FILENAME="login_session_token"
 URL="https://spkcloud.appspot.com"
 
 local_path = os.path.dirname(os.path.realpath(__file__))
+
 if "Rhino" in local_path:
     spkcam_id = Rhino.PlugIns.PlugIn.IdFromName("Spkcam")
     plugin = Rhino.PlugIns.PlugIn.Find(spkcam_id)
@@ -26,7 +27,8 @@ if "Rhino" in local_path:
     else:
         local_path = appdata_path
 
-
+else: local_path =os.path.dirname(local_path)
+                                   
 ID_FILE=os.path.join(local_path,"res","Settings",ID_FILENAME)
 
 #devuelve el string que se debe mandar al comunicarse con el servidor (con el nombre "spkcam_session_token") o None si no se inicio sesion. Nota: ya no es necesario mandar la variable 'author' al subir productos, el servidor lo saca de aqui.
