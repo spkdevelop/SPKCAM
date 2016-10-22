@@ -373,6 +373,7 @@ class SettingsControl():
     
     def read_info_file(self,file_name):
         file_path = os.path.join("\\".join(rs.DocumentPath().split("\\")[:-1]),file_name)
+        if not os.path.isfile(file_path): file_path = os.path.join("\\".join(rs.DocumentPath().split("\\")[:-1]),file_name + ".txt")
         if os.path.isfile(file_path):
             f = open(file_path)
             info_file_path = json.loads(f.read())
@@ -403,11 +404,13 @@ class SettingsControl():
             "new_gcode_file_0":gcode_file,
             }
         
-        drive_info = self.read_info_file("spkcam_data.txt")
+        drive_info = self.read_info_file("spkcam_data")
         if drive_info: 
+    
             data["drive_folder"]=drive_info["drive_id"]
             data["labels"] = "%s,%s" % (data["labels"],drive_info["labels"])
-            data["description"]=drive_info["description"]
+            data["description"] = str(drive_info["description"].decode("utf-8","replace"))
+            data["technical-description"]=drive_info["technical-description"]
             
         openimages = []
        
@@ -436,7 +439,7 @@ class SettingsControl():
                 
             self.user_data["name_url"] = spk_page + spk_response
             self.form.panel.Controls.Find("name_url", True)[0].Text =  self.user_data["name_url"]
-        except:
+        except ZeroDivisionError:
             self.add_line(TXT["error_coneccion"])
         
         if openimages:
